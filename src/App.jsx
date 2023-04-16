@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { NFTCard } from "./components/nftCard"
 
 function App() {
 
@@ -59,6 +60,7 @@ function App() {
     <div className='flex flex-col items-center justify-center py-8 gap-y-3'>
       <div className='flex flex-col w-full justify-center items-center gap-y-2'>
         <input
+          disabled={fetchForCollection}
           onChange={(e) => { setWalletAddress(e.target.value) }}
           value={wallet}
           type="text" placeholder='Add your wallet address' />
@@ -80,6 +82,15 @@ function App() {
             }
           }
         >Let's go!</button>
+      </div>
+      <div className='flex flex-wrap gap-y-12 mt-4 w-5/6 gap-x-2 justify-center'>
+        {
+          NFTs.length && NFTs.map(nft => {
+            return (
+              <NFTCard nft={nft}></NFTCard>
+            )
+          })
+        }
       </div>
     </div>
   )
