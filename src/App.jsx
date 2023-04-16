@@ -18,7 +18,6 @@ function App() {
     console.log("fetching nfts");
     const api_key = import.meta.env.VITE_API_KEY;
     const baseURL = `https://eth-mainnet.g.alchemy.com/v2/${api_key}/getNFTs/`;
-    console.log(api_key);
 
     var requestOptions = {
       method: 'GET'
@@ -58,23 +57,25 @@ function App() {
 
 
   return (
-    <div className='flex flex-col items-center justify-center py-8 gap-y-3'>
+    <div className='bg-black min-h-screen text-white flex flex-col items-center justify-center py-8 gap-y-3'>
       <div className='flex flex-col w-full justify-center items-center gap-y-2'>
-        <input
+        <input className='px-3 py-3 w-1/3 text-gray-700 placeholder-blueGray-300 relative bg-white rounded text-md border-0 shadow outline-none focus:outline-none focus:ring '
           disabled={fetchForCollection}
           onChange={(e) => { setWalletAddress(e.target.value) }}
           value={wallet}
           type="text" placeholder='Add your wallet address' />
         <input
+          className='px-3 py-3 w-1/3 text-gray-700 placeholder-blueGray-300 relative bg-white rounded text-md border-0 shadow outline-none focus:outline-none focus:ring w-fit'
           onChange={(e) => { setCollectionAddress(e.target.value) }}
           valu={collection} type="text" placeholder='Add the collection address' />
-        <label className='text-gray-600'>
+        <label className='text-gray-100'>
           <input type={"checkbox"}
+            className='px-3 py-3 text-gray-600 placeholder-blueGray-300 relative bg-white rounded text-md border-0 shadow outline-none focus:outline-none focus:ring w-fit'
             onChange={(e) => { setFetchForCollection(e.target.checked) }}
-            className="mr-2" />
+          />
           Fetch for collection
         </label>
-        <button className={'disabled:bg-slate-500 text-white bg-blue-400 px-4 py-2 rounded-sm w-1/5'}
+        <button className={'disabled:bg-blue-600  text-white bg-blue-500 active:bg-blue-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'}
           onClick={
             () => {
               if (fetchForCollection) {
