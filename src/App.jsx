@@ -16,8 +16,9 @@ function App() {
 
     let nfts;
     console.log("fetching nfts");
-    const api_key = import.meta.env.API_KEY;
-    const baseURL = `https://eth-goerli.g.alchemy.com/v2/${api_key}/getNFTs/`;
+    const api_key = import.meta.env.VITE_API_KEY;
+    const baseURL = `https://eth-mainnet.g.alchemy.com/v2/${api_key}/getNFTs/`;
+    console.log(api_key);
 
     var requestOptions = {
       method: 'GET'
@@ -44,17 +45,16 @@ function App() {
       var requestOptions = {
         method: 'GET'
       };
-      const api_key = import.meta.env.API_KEY;
-      const baseURL = `https://eth-goerli.g.alchemy.com/v2/${api_key}/getNFTsForCollection/`;
+      const api_key = import.meta.env.VITE_API_KEY;
+      const baseURL = `https://eth-mainnet.g.alchemy.com/v2/${api_key}/getNFTsForCollection/`;
       const fetchURL = `${baseURL}?contractAddress=${collection}&withMetadata=${"true"}`;
-      const nfts = await fetch(fetchURL, requestOptions)
-        .then(data => data.json());
+      const nfts = await fetch(fetchURL, requestOptions).then(data => data.json())
       if (nfts) {
-        console.log("NFTs in collection:", nfts);
-        setNFTs(nfts.nfts);
+        console.log("NFTs in collection:", nfts)
+        setNFTs(nfts.nfts)
       }
     }
-  };
+  }
 
 
   return (
