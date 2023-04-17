@@ -65,7 +65,7 @@ function App() {
           value={wallet}
           type="text" placeholder='Add your wallet address' />
         <input
-          className='px-3 py-3 w-1/3 text-gray-700 placeholder-blueGray-300 relative bg-white rounded text-md border-0 shadow outline-none focus:outline-none focus:ring w-fit'
+          className='px-3 py-3 w-1/3 text-gray-700 placeholder-blueGray-300 relative bg-white rounded text-md border-0 shadow outline-none focus:outline-none focus:ring '
           onChange={(e) => { setCollectionAddress(e.target.value) }}
           valu={collection} type="text" placeholder='Add the collection address' />
         <label className='text-gray-100'>
