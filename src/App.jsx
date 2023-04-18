@@ -4,16 +4,13 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { NFTCard } from './components/nftCard'
 
-
 function App() {
-
   const [wallet, setWalletAddress] = useState("");
   const [collection, setCollectionAddress] = useState("");
   const [NFTs, setNFTs] = useState([])
   const [fetchForCollection, setFetchForCollection] = useState(false);
 
   const fetchNFTs = async () => {
-
     let nfts;
     console.log("fetching nfts");
     const api_key = import.meta.env.VITE_API_KEY;
@@ -24,7 +21,6 @@ function App() {
     };
     if (!collection.length) {
       const fetchURL = `${baseURL}?owner=${wallet}`;
-
       nfts = await fetch(fetchURL, requestOptions)
         .then(data => data.json());
     } else {
@@ -53,8 +49,7 @@ function App() {
         setNFTs(nfts.nfts)
       }
     }
-  }
-
+  };
 
   return (
     <div className='bg-black min-h-screen text-white flex flex-col items-center justify-center py-8 gap-y-3'>
@@ -65,9 +60,10 @@ function App() {
           value={wallet}
           type="text" placeholder='Add your wallet address' />
         <input
-          className='px-3 py-3 w-1/3 text-gray-700 placeholder-blueGray-300 relative bg-white rounded text-md border-0 shadow outline-none focus:outline-none focus:ring '
+          className='px-3 py-3 w-1/3 text-gray-700 placeholder-blueGray-300 relative bg-white rounded text-md border-0 shadow outline-none focus:outline-none focus:ring'
           onChange={(e) => { setCollectionAddress(e.target.value) }}
-          valu={collection} type="text" placeholder='Add the collection address' />
+          value={collection}
+          type="text" placeholder='Add the collection address' />
         <label className='text-gray-100'>
           <input type={"checkbox"}
             className='px-3 py-3 text-gray-600 placeholder-blueGray-300 relative bg-white rounded text-md border-0 shadow outline-none focus:outline-none focus:ring w-fit'
@@ -97,5 +93,4 @@ function App() {
     </div>
   )
 }
-
 export default App;
